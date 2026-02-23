@@ -134,3 +134,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Large video files (exceed GitHub 100MB limit)
+public/assets/mixedreality/Normal Delivery.mp4
+public/assets/mixedreality/Thorax.mp4
