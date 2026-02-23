@@ -51,7 +51,7 @@ export default function About() {
                         {data.map((item) => (
                             <li 
                                 key={item.name} 
-                                className="border border-gray-300 dark:border-white/30 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black dark:hover:shadow-white/80 dark:hover:bg-darkHover/50"
+                                className="border border-gray-400 dark:border-white/30 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black dark:hover:shadow-white/80 dark:hover:bg-darkHover/50"
                                 style={{
                                     backgroundImage: `url(${item.bgImage})`, 
                                     backgroundSize: 'cover', 
