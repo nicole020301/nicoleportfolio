@@ -30,9 +30,9 @@ export default function Work() {
     ];
 
     const mixedReality = [
-        { title: 'CATHETER INSERTION', url: '/assets/mixedreality/Catheter Module1.mp4' },
-        { title: 'NORMAL DELIVERY', url: '/assets/mixedreality/Normal Delivery1.mp4' },
-        { title: 'THORAX', url: '/assets/mixedreality/Thorax1.mp4' },
+        { title: 'CATHETER INSERTION', url: '/assets/mixedreality/Catheter Module.mp4' },
+        { title: 'NORMAL DELIVERY', url: '/assets/mixedreality/Normal Delivery.mp4' },
+        { title: 'THORAX', url: '/assets/mixedreality/Thorax.mp4' },
     ];
 
     const assets1 = [
