@@ -8,7 +8,7 @@ export default function Services() {
                 </svg>
             ),
             description: 'Creating immersive, interactive web experiences that push the boundaries of what\'s possible in the digital world.',
-            tags: ['Next.js', 'Three.js'],
+            tags: ['Next.js', 'Three.js', 'GSAP'],
             gradient: 'from-purple-600/20 to-violet-900/20',
             border: 'hover:border-purple-500/60',
             glow: 'hover:shadow-[0_0_30px_rgba(184,32,230,0.2)]',
@@ -21,7 +21,7 @@ export default function Services() {
                 </svg>
             ),
             description: 'Developing user-centered, intuitive interfaces for XR experiences that provide seamless interaction and engagement.',
-            tags: ['Design Systems'],
+            tags: ['Figma', 'Prototyping', 'Design Systems'],
             gradient: 'from-orange-600/20 to-amber-900/20',
             border: 'hover:border-orange-500/60',
             glow: 'hover:shadow-[0_0_30px_rgba(218,125,32,0.2)]',
@@ -34,7 +34,7 @@ export default function Services() {
                 </svg>
             ),
             description: 'Creating stunning visual designs that enhance the immersive nature of XR environments, blending creativity with technical expertise.',
-            tags: ['Canva', 'Sketchup'],
+            tags: ['Canva', 'Sketchup', 'Blender'],
             gradient: 'from-pink-600/20 to-rose-900/20',
             border: 'hover:border-pink-500/60',
             glow: 'hover:shadow-[0_0_30px_rgba(236,72,153,0.2)]',

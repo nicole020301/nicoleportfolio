@@ -112,7 +112,7 @@ export default function Contact() {
                         />
                     </div>
 
-                    <div className="h-captcha" data-captcha="true" />
+                    {/* <div className="h-captcha" data-captcha="true" /> */}
 
                     <div className="flex items-center justify-between flex-wrap gap-4">
                         <button
