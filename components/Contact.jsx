@@ -13,9 +13,13 @@ export default function Contact() {
         }
         setResult("Sending…");
         const formData = new FormData(event.target);
-        formData.append("access_key", "--- enter your access key here-------");
+        formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY"); // get one at web3forms.com
 
-        const res = { success: true };
+        const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData,
+        }).then((r) => r.json());
+
         if (res.success) {
             setResult("Message sent! I'll get back to you soon. ✨");
             event.target.reset();
