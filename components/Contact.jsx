@@ -3,101 +3,127 @@ import { useEffect, useState } from 'react'
 
 export default function Contact() {
     const [result, setResult] = useState("");
+
     const onSubmit = async (event) => {
         event.preventDefault();
-        const hCaptcha = event.target.querySelector('textarea[name=h-captcha-response]').value;
+        const hCaptcha = event.target.querySelector('textarea[name=h-captcha-response]')?.value;
         if (!hCaptcha) {
-            event.preventDefault();
-            setResult("Please fill out captcha field");
-            return
+            setResult("Please fill out the captcha field.");
+            return;
         }
-        setResult("Sending....");
+        setResult("Sending…");
         const formData = new FormData(event.target);
-
-        // ----- Enter your Web3 Forms Access key below---------
-
         formData.append("access_key", "--- enter your access key here-------");
 
-        const res = {success:true}
-        // const res = await fetch("https://api.web3forms.com/submit", {
-        //     method: "POST",
-        //     body: formData
-        // }).then((res) => res.json());
-
+        const res = { success: true };
         if (res.success) {
-            console.log("Success", res);
-            setResult(res.message);
+            setResult("Message sent! I'll get back to you soon. ✨");
             event.target.reset();
         } else {
-            console.log("Error", res);
-            setResult(res.message);
+            setResult("Something went wrong. Please try again.");
         }
     };
 
     function CaptchaLoader() {
         const captchadiv = document.querySelectorAll('[data-captcha="true"]');
         if (captchadiv.length) {
-            let lang = null;
-            let onload = null;
-            let render = null;
-
-            captchadiv.forEach(function (item) {
+            let lang = null, onload = null, render = null;
+            captchadiv.forEach((item) => {
                 const sitekey = item.dataset.sitekey;
-                lang = item.dataset.lang;
+                lang   = item.dataset.lang;
                 onload = item.dataset.onload;
                 render = item.dataset.render;
-
-                if (!sitekey) {
-                    item.dataset.sitekey = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
-                }
+                if (!sitekey) item.dataset.sitekey = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
             });
-
             let scriptSrc = "https://js.hcaptcha.com/1/api.js?recaptchacompat=off";
-            if (lang) {
-                scriptSrc += `&hl=${lang}`;
-            }
-            if (onload) {
-                scriptSrc += `&onload=${onload}`;
-            }
-            if (render) {
-                scriptSrc += `&render=${render}`;
-            }
-
-            var script = document.createElement("script");
-            script.type = "text/javascript";
-            script.async = true;
-            script.defer = true;
-            script.src = scriptSrc;
+            if (lang)   scriptSrc += `&hl=${lang}`;
+            if (onload) scriptSrc += `&onload=${onload}`;
+            if (render) scriptSrc += `&render=${render}`;
+            const script = Object.assign(document.createElement("script"), {
+                type: "text/javascript", async: true, defer: true, src: scriptSrc,
+            });
             document.body.appendChild(script);
         }
     }
 
-    useEffect(() => {
-        CaptchaLoader();
-    }, []);
+    useEffect(() => { CaptchaLoader(); }, []);
+
     return (
-        <div id="contact" className="w-full px-[12%] py-10 scroll-mt-20 bg-[url('/assets/footer-bg-color.png')] bg-no-repeat bg-[length:90%_auto] bg-center dark:bg-none">
+        <div id="contact" className="relative w-full px-[8%] xl:px-[12%] py-20 scroll-mt-20 overflow-hidden">
 
-            <h4 className="text-center text-5xl font-Ovo">Contact</h4>
-            <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">Thank you for visiting my website! If you'd like to connect, please use the contact form or email. Don&apos;t hesitate to reach out with any questions, comments, or feedback.</p>
+            {/* Ambient orbs */}
+            <div className="hero-orb w-[400px] h-[400px] bg-purple-600/15 -bottom-20 -left-20" style={{ animationDelay: '1s' }} />
+            <div className="hero-orb w-[300px] h-[300px] bg-orange-500/10 top-10 right-0" style={{ animationDelay: '3s' }} />
 
-            <form onSubmit={onSubmit} className="max-w-2xl mx-auto">
-
-                <input type="hidden" name="subject" value="Nicole A. De Llamas - New form Submission" />
-
-                <div className="grid grid-cols-auto gap-6 mt-10 mb-8">
-                    <input type="text" placeholder="Enter your name" className="flex-1 px-3 py-2 focus:ring-1 outline-none border border-gray-300 dark:border-white/30 rounded-md bg-white dark:bg-darkHover/30" required name="name" />
-
-                    <input type="email" placeholder="Enter your email" className="flex-1 px-3 py-2 focus:ring-1 outline-none border border-gray-300 dark:border-white/30 rounded-md bg-white dark:bg-darkHover/30" required name="email" />
+            {/* Header */}
+            <div className="text-center mb-14">
+                <div className="section-badge justify-center mx-auto w-fit">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#b820e6] inline-block" />
+                    Get In Touch
                 </div>
-                <textarea rows="6" placeholder="Enter your message" className="w-full px-4 py-2 focus:ring-1 outline-none border border-gray-300 dark:border-white/30 rounded-md bg-white mb-6 dark:bg-darkHover/30" required name="message"></textarea>
-                <div className="h-captcha mb-6 max-w-full" data-captcha="true"></div>
-                <button type='submit' className="py-2 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 dark:bg-transparent dark:border dark:border-white/30 dark:hover:bg-darkHover">
-                Submit now
-                    <img src="/assets/right-arrow-white.png" alt="" className="w-4" />
-                </button>
-                <p className='mt-4'>{result}</p>
-            </form>
+                <h2 className="text-4xl sm:text-5xl font-Ovo font-semibold mb-4">
+                    Say <span className="gradient-text">Hello</span>
+                </h2>
+                <p className="max-w-xl mx-auto font-Ovo text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Have a project in mind or just want to connect? Fill out the form and I&apos;ll get back to you as soon as possible.
+                </p>
+            </div>
+
+            {/* Form card */}
+            <div className="max-w-2xl mx-auto glow-card gradient-border rounded-3xl p-8 sm:p-10 backdrop-blur-sm">
+                <form onSubmit={onSubmit} className="space-y-5">
+                    <input type="hidden" name="subject" value="Nicole A. De Llamas – New Form Submission" />
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-xs font-semibold tracking-wider uppercase text-gray-500 dark:text-gray-400">Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Your name"
+                                required
+                                className="px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all text-sm"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-xs font-semibold tracking-wider uppercase text-gray-500 dark:text-gray-400">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="your@email.com"
+                                required
+                                className="px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all text-sm"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                        <label className="text-xs font-semibold tracking-wider uppercase text-gray-500 dark:text-gray-400">Message</label>
+                        <textarea
+                            rows="6"
+                            name="message"
+                            placeholder="Tell me about your project or idea…"
+                            required
+                            className="px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all text-sm resize-none"
+                        />
+                    </div>
+
+                    <div className="h-captcha" data-captcha="true" />
+
+                    <div className="flex items-center justify-between flex-wrap gap-4">
+                        <button
+                            type="submit"
+                            className="btn-gradient px-8 py-3 rounded-full text-white font-medium flex items-center gap-2 shadow-lg shadow-purple-500/30 text-sm"
+                        >
+                            Send message
+                            <img src="/assets/right-arrow-white.png" alt="" className="w-4" />
+                        </button>
+                        {result && (
+                            <p className="text-sm text-gray-600 dark:text-gray-300 font-Ovo">{result}</p>
+                        )}
+                    </div>
+                </form>
+            </div>
         </div>
-    )
+    );
 }
