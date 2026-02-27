@@ -16,7 +16,7 @@
 
     const stats = [
         {
-            value: 'Projects', sub: 'Built & deployed',
+            value: '5+', label: 'Projects', sub: 'Built & deployed',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-[#b820e6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -24,7 +24,7 @@
             ),
         },
         {
-            value: 'BS ECE', sub: 'Electronics & Communication Engineering',
+            value: 'BS', label: 'ECE', sub: 'Electronics & Comms Eng.',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-[#b820e6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m-4-3.5l4 1.5 4-1.5" />
@@ -32,7 +32,7 @@
             ),
         },
         {
-            value: 'XR', sub: 'Immersive experiences',
+            value: 'XR', label: 'Focus', sub: 'Immersive experiences',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-[#b820e6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -74,10 +74,7 @@
                     {/* Stats grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl">
                         {stats.map((item) => (
-                            <div
-                                key={item.label}
-                                className="glow-card gradient-border beam-card rounded-2xl p-5 cursor-default"
-                            >
+                            <div key={item.label} className="glow-card gradient-border beam-card rounded-2xl p-5 cursor-default">
                                 <span className="mb-2 block">{item.icon}</span>
                                 <p className="text-3xl font-bold gradient-text font-Ovo">{item.value}</p>
                                 <p className="font-semibold text-sm mt-1">{item.label}</p>
